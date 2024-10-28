@@ -5,21 +5,24 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import org.compose.ui.builder.component.TextComponent
+import org.compose.ui.builder.layout.ColumnLayout
+import org.compose.ui.builder.modifierOperation.BackgroundOperation
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
 fun App() {
     MaterialTheme {
-        val columnComponent = ColumnComponent()
-        columnComponent.onChangeModifier(BackgroundOperation(Color(0xFFFF0541), RoundedCornerShape(4.dp)))
+        val columnLayout = ColumnLayout()
+        columnLayout.onChangeModifier(BackgroundOperation(Color(0xFFFF0541), RoundedCornerShape(4.dp)))
         val textComponent = TextComponent("Text 1")
         val textComponent2 = TextComponent("Text 2")
         val textComponent3 = TextComponent("Text 3")
         val textComponent4 = TextComponent("Text 4")
-        val columnComponent2 = ColumnComponent()
-        columnComponent2.onChangeModifier(BackgroundOperation(Color.Cyan, RoundedCornerShape(4.dp)))
-        columnComponent2.apply {
+        val columnLayout2 = ColumnLayout()
+        columnLayout2.onChangeModifier(BackgroundOperation(Color.Cyan, RoundedCornerShape(4.dp)))
+        columnLayout2.apply {
             addComponent(textComponent)
             addComponent(textComponent2)
             addComponent(textComponent3)
@@ -28,15 +31,15 @@ fun App() {
 
 
 
-        columnComponent.addComponent(textComponent)
-        columnComponent.addComponent(textComponent2)
-        columnComponent.addComponent(textComponent3)
-        columnComponent.addComponent(textComponent4)
-        columnComponent.addComponent(columnComponent2)
+        columnLayout.addComponent(textComponent)
+        columnLayout.addComponent(textComponent2)
+        columnLayout.addComponent(textComponent3)
+        columnLayout.addComponent(textComponent4)
+        columnLayout.addComponent(columnLayout2)
 
 
-        columnComponent.showUi()
+        columnLayout.showUi()
 
-        println("our code  ${columnComponent.generateCode()}")
+        println("our code  ${columnLayout.generateCode()}")
     }
 }

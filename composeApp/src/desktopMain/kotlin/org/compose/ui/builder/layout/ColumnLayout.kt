@@ -1,4 +1,4 @@
-package org.compose.ui.builder
+package org.compose.ui.builder.layout
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
@@ -6,22 +6,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import org.compose.ui.builder.component.Component
+import org.compose.ui.builder.modifierOperation.ModifierOperation
 
-interface Layout {
-
-    var componentList: List<Component>
-
-    fun addComponent(component: Component) {
-        componentList += component
-    }
-
-    fun removeComponent(component: Component) {
-        componentList -= component
-    }
-
-}
-
-class ColumnComponent() : Layout, Component {
+class ColumnLayout() : Layout, Component {
 
     override var modifier: Modifier = Modifier
     override var onModifierChangeIncrement: Int by mutableStateOf(0)
@@ -45,7 +33,7 @@ class ColumnComponent() : Layout, Component {
         componentList.forEach {
             contentCode += "    " + it.generateCode() + "\n"
         }
-       return """Column(
+        return """Column(
             modifier =   ${generateModifier()}
         ) {
             $contentCode
