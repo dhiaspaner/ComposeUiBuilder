@@ -25,7 +25,6 @@ class ColumnLayout() : Layout, Component {
                 it.showUi()
             }
         }
-
     }
 
     override fun generateCode(): String {
@@ -34,7 +33,7 @@ class ColumnLayout() : Layout, Component {
             contentCode += "    " + it.generateCode() + "\n"
         }
         return """Column(
-            modifier =   ${generateModifier()}
+            modifier =  Modifier${generateModifier()}
         ) {
             $contentCode
         }
@@ -42,5 +41,12 @@ class ColumnLayout() : Layout, Component {
     }
 
     override var componentList: List<Component> = emptyList()
+
+}
+
+//needs to create a component on separate file with keeping in count the nested layouts/components
+class ComponentFactory {
+
+
 
 }
