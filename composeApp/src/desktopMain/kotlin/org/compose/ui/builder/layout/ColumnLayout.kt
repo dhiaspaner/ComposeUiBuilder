@@ -27,13 +27,13 @@ class ColumnLayout() : Layout, Component {
         }
     }
 
-    override fun generateCode(): String {
+    override fun generateKotlinCode(): String {
         var contentCode = ""
         componentList.forEach {
-            contentCode += "    " + it.generateCode() + "\n"
+            contentCode += "    " + it.generateKotlinCode() + "\n"
         }
         return """Column(
-            modifier =  Modifier${generateModifier()}
+            modifier = Modifier${generateModifier()}
         ) {
             $contentCode
         }

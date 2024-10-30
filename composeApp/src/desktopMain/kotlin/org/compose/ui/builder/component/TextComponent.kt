@@ -19,12 +19,11 @@ class TextComponent(private val text: String) : Component {
     var textOverflow by mutableStateOf(TextOverflow.Clip)
     var maxLines by mutableIntStateOf(1)
 
-    override fun generateCode(): String {
+    override fun generateKotlinCode(): String {
         return  """
             Text(
                 text = "$text",
-                modifier = Modifier
-                     ${generateModifier()}
+                modifier = ${generateModifier()}
             )""".trimIndent()
     }
 
