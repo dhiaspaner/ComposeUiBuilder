@@ -1,46 +1,45 @@
 package org.compose.ui.builder.layout
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import org.compose.ui.builder.component.Component
 import org.compose.ui.builder.modifierOperation.ModifierOperation
 
-class ColumnLayout() : Layout, Component {
+class BoxLayout() : Layout, Component {
 
+    override var componentList: List<Component> = emptyList()
     override var modifier: Modifier = Modifier
-    override var onModifierChangeIncrement: Int by mutableStateOf(0)
+    override var onModifierChangeIncrement: Int by mutableIntStateOf(0)
     override var modifierOperationList: List<ModifierOperation> = emptyList()
+
 
     @Composable
     override fun showUi() {
-        onModifierChangeIncrement
-        Column(
-            modifier = modifier
+        Box(
+            modifier = modifier,
         ) {
-            componentList.forEach {
-                it.showUi()
+            componentList.forEach { component ->
+                component.showUi()
             }
         }
-
     }
 
     override fun generateKotlinCode(): String {
-        var contentCode = ""
+        var componentListCode = ""
         componentList.forEach {
-            contentCode += "    " + it.generateKotlinCode() + "\n"
+            componentListCode += "${it.generateKotlinCode()}\n"
         }
-        return """Column(
-            modifier = ${generateModifier()}
+        return """
+        Box(
+           modifier = ${generateModifier()}
         ) {
-            $contentCode
+        
         }
-        """.trimIndent()
+    """.trimIndent()
     }
-
-    override var componentList: List<Component> = emptyList()
 
 }

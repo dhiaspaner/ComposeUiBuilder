@@ -21,6 +21,8 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            implementation("com.mohamedrejeb.dnd:compose-dnd:0.3.0")
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

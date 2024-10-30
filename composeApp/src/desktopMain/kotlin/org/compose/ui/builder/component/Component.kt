@@ -17,7 +17,7 @@ interface  Component {
     }
 
     fun generateModifier() : String {
-        var modifierOperationListString = ""
+        var modifierOperationListString = "Modifier\n"
         modifierOperationList.forEach { op ->
             modifierOperationListString += op.generateOperationCode() + "\n"
         }
@@ -29,7 +29,7 @@ interface  Component {
     @Composable
     fun showUi()
 
-    fun generateCode(): String
+    fun generateKotlinCode(): String
 
 }
 
