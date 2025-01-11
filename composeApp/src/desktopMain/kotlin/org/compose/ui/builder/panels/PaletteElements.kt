@@ -4,5 +4,4 @@ enum class PaletteElements {
     Box,
     Column,
     Text,
-    None
 }
