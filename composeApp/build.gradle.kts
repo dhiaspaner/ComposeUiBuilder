@@ -34,11 +34,11 @@ kotlin {
 
 compose.desktop {
     application {
-        mainClass = "org.compose.ui.builder.project.MainKt"
+        mainClass = "org.compose.ui.builder.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "org.compose.ui.builder.project"
+            packageName = "org.compose.ui.builder"
             packageVersion = "1.0.0"
         }
     }

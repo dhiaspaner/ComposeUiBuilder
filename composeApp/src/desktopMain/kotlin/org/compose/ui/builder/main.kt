@@ -1,4 +1,4 @@
-package org.compose.ui.builder.project
+package org.compose.ui.builder
 
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application

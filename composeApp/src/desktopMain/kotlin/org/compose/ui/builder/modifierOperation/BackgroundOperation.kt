@@ -9,8 +9,6 @@ import org.compose.ui.builder.toKotlinCode
 
 class BackgroundOperation(val color: Color, val shape: Shape =  RectangleShape) : ModifierOperation {
 
-
-
     override fun applyOnModifier(modifier: Modifier) = modifier
         .background(color = color , shape = shape)
 
